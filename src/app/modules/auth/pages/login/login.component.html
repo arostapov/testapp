@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form class="login-form" [formGroup]="loginFormGroup" (keydown.enter)="login()">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="admin@admin.com" formControlName="email">
+        <mat-error *ngIf="hasEmailError(loginFormGroup.controls.email)">
+          Email address is invalid
+        </mat-error>
+        <mat-error *ngIf="hasRequiredError(loginFormGroup.controls.email)">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" formControlName="password">
+        <mat-error *ngIf="hasRequiredError(loginFormGroup.controls.password)">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <div class="login-error" *ngIf="loginErrorMessage?.length > 0">
+      <span>{{loginErrorMessage}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="login()">Login</button>
+  </mat-card-actions>
+</mat-card>
