@@ -1,0 +1,49 @@
+[{
+        "id": 1157,
+        "name": "Displayed name",
+        "type": "string",
+        "fieldId": 2,
+        "fieldCode": "DisplayedName",
+        "placeholderTxt": "Write displayed name",
+        "isReadOnly": false,
+        "isHidden": false,
+        "priority": 1,
+        "isMandatory": false
+    },
+    {
+        "id": 1158,
+        "name": "Headline",
+        "type": "string",
+        "fieldId": 3,
+        "fieldCode": "Headline",
+        "placeholderTxt": "Write headline",
+        "isReadOnly": false,
+        "isHidden": false,
+        "priority": 2,
+        "isMandatory": false
+    },
+    {
+        "id": 1160,
+        "name": "Last Modified Date",
+        "type": "datatime",
+        "fieldId": 15,
+        "fieldCode": "LastModifiedDate",
+        "placeholderTxt": "Write last modified date",
+        "isReadOnly": false,
+        "isHidden": false,
+        "priority": 3,
+        "isMandatory": false
+    },
+    {
+        "id": 1161,
+        "name": "Publication Date",
+        "type": "datatime",
+        "fieldId": 16,
+        "fieldCode": "PublicationDate",
+        "placeholderTxt": "Select date",
+        "isReadOnly": false,
+        "isHidden": false,
+        "priority": 4,
+        "isMandatory": false
+    }
+]
