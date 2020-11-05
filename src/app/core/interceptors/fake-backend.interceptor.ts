@@ -8,11 +8,11 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { User } from '../../modules/auth/models/user.model';
+import { PublicationEditResponse, PublicationResponse } from '../../modules/home/models/publication.model';
 import PublicationValues from '../../../assets/datasets/Publication.values.json';
 import PublicationMetadata from '../../../assets/datasets/Publication.metadata.json';
 import PublicationEditValues from '../../../assets/datasets/PublicationEdit.values.json';
 import PublicationEditMetadata from '../../../assets/datasets/PublicationEdit.metadata.json';
-import { PublicationEditResponse, PublicationResponse } from '../../modules/home/models/publication.model';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {

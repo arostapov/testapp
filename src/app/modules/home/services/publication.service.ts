@@ -9,7 +9,7 @@ export class PublicationService {
 
   constructor(private http: HttpClient) { }
 
-  getPublications(): Observable<PublicationResponse> {
+  public getPublications(): Observable<PublicationResponse> {
     return this.http.get<PublicationResponse>(`${environment.apiUrl}/home/publications`);
   }
 }

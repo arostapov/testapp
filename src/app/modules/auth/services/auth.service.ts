@@ -6,7 +6,7 @@ import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { tap } from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,14 @@ export class AuthService {
               private http: HttpClient,
               private router: Router) { }
 
-  login(loginForm: Login): Observable<User> {
+  public login(loginForm: Login): Observable<User> {
     return this.http.post<User>(`${environment.apiUrl}/auth/login`, loginForm)
       .pipe(tap((user: User) => {
         this.userService.writeUser(user);
       }));
   }
 
-  logout(): void {
+  public logout(): void {
     this.userService.deleteUser();
     this.router.navigate(['auth']);
   }

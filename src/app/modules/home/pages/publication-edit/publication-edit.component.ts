@@ -86,11 +86,11 @@ export class PublicationEditComponent implements OnInit, OnDestroy {
   }
 
   saveResult(): void {
-    let fieldId;
     Object.keys(this.publicationEditForm.value).map(fieldName => {
-      fieldId = this.publicationMetadata.find(pm => pm.fieldCode === fieldName).fieldId;
+      const fieldId = this.publicationMetadata.find(pm => pm.fieldCode === fieldName).fieldId;
       this.publicationInfo.data.find(pi => pi.fieldId === fieldId).value = this.publicationEditForm.get(fieldName).value;
     });
+
     this.isDataSaved = true;
     this.publicationEditService.saveEditedPublication(this.publicationInfo);
   }

@@ -1,15 +1,15 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { PublicationService } from '../../services/publication.service';
-import {mergeMap, take, takeUntil, tap} from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { Publication, PublicationMetadata, PublicationResponse, Publications } from '../../models/publication.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EPublicationColumnType } from '../../enums/publication-type.enum';
-import {Subject} from 'rxjs';
-import {PublicationEditService} from '../../services/publication-edit.service';
-import {MatTable} from '@angular/material/table';
-import {SidenavService} from '../../services/sidenav.service';
+import { Subject } from 'rxjs';
+import { PublicationEditService } from '../../services/publication-edit.service';
+import { MatTable } from '@angular/material/table';
+import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
   selector: 'app-publication',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {take} from 'rxjs/operators';
-import {ActivatedRoute, Router} from '@angular/router';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { take } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +10,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
-  returnUrl: string;
-  loginErrorMessage: string;
+  public loginFormGroup: FormGroup;
+  public loginErrorMessage: string;
+
+  private returnUrl: string;
   constructor(private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService) { }
@@ -51,5 +52,4 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-
 }

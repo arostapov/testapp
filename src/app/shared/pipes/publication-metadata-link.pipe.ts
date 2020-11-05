@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Publication, PublicationData} from '../../modules/home/models/publication.model';
+import { Publication, PublicationData } from '../../modules/home/models/publication.model';
 
 @Pipe({
   name: 'publicationMetadataLink'
