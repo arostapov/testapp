@@ -1,0 +1,41 @@
+<div class="publication-edit">
+  <h1 class="title">
+    Publication Edit
+  </h1>
+  <form [formGroup]="publicationEditForm" class="publication-edit-form">
+    <ng-container *ngFor="let pm of publicationMetadata">
+      <ng-container [ngSwitch]="pm.type">
+        <mat-form-field *ngSwitchCase="publicationColumnTypes.STRING">
+          <input type="text" matInput
+                 [placeholder]="pm.placeholderTxt"
+                 [formControlName]="pm.fieldCode">
+          <mat-error *ngIf="isFieldRequired(publicationEditForm.controls[pm.fieldCode])">
+            Field is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngSwitchCase="publicationColumnTypes.TEXT">
+          <textarea matInput
+                    [placeholder]="pm.placeholderTxt"
+                    [formControlName]="pm.fieldCode"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"></textarea>
+          <mat-error *ngIf="isFieldRequired(publicationEditForm.controls[pm.fieldCode])">
+            Field is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngSwitchCase="publicationColumnTypes.DATETIME">
+          <mat-label>{{pm.placeholderTxt}}</mat-label>
+          <input matInput [matDatepicker]="datepicker" [formControlName]="pm.fieldCode">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker color="primary" dataformatas="DD MM YYYY"></mat-datepicker>
+          <mat-error *ngIf="isFieldRequired(publicationEditForm.controls[pm.fieldCode])">
+            Field is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </ng-container>
+    </ng-container>
+  </form>
+  <button mat-button color="primary" type="button" (click)="saveResult()">Save</button>
+  <pre *ngIf="isDataSaved">{{publicationInfo | json}}</pre>
+</div>
