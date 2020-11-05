@@ -1,0 +1,17 @@
+@import "src/variables";
+
+.publication {
+  transform: translate(0, 0);
+  overflow: hidden;
+  height: 100%;
+}
+.publication-container {
+  height: 100%;
+}
+.publication-content {
+  padding: 10px;
+}
+.publication-edit {
+  display: flex;
+  width: 30%;
+}

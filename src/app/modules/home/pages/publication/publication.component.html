@@ -1,0 +1,36 @@
+<div class="publication">
+  <mat-sidenav-container (backdropClick)="sidenav.close()" class="publication-container">
+    <mat-sidenav-content>
+      <div class="publication-content">
+        <mat-table [dataSource]="publications" #publicationsTable
+                   cdkDropList cdkDropListOrientation="horizontal"
+                   (cdkDropListDropped)="drop($event)">
+          <ng-container [matColumnDef]="column.name"
+                        *ngFor="let column of publicationsMetadata">
+            <mat-header-cell cdkDrag *matHeaderCellDef>{{column.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              {{
+                column.type === publicationColumnTypes.DATETIME ?
+                ((item | publicationMetadataLink : column.fieldId).value | date : 'dd.MM.yyyy') :
+                (item | publicationMetadataLink : column.fieldId).value
+              }}
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"
+                   (click)="editPublication(row)"></mat-row>
+        </mat-table>
+      </div>
+    </mat-sidenav-content>
+    <mat-sidenav mode="over" #sidenav
+                 class="publication-edit"
+                 position="end"
+                 (closed)="sidenavClosed()"
+                 [fixedInViewport]="true"
+                 [fixedTopGap]="0"
+                 [opened]="isSidenavOpened"
+                 [fixedBottomGap]="0">
+      <router-outlet></router-outlet>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
