@@ -59,7 +59,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const id = params.get('id');
 
       return ok({
-        publicationInfo: PublicationEditValues,
+        publicationInfo: PublicationEditValues.result.find(p => +p.id === +id),
         publicationEditMetadata: PublicationEditMetadata,
       });
     }
