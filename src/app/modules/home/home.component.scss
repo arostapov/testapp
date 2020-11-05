@@ -1,0 +1,13 @@
+@import "src/variables";
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-wrapper {
+  height: 100%;
+}
+.home-content {
+  height: calc(100% - #{$toolbar-size});
+}
