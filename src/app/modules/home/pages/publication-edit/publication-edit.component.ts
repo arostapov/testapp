@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { PublicationEditService } from '../../services/publication-edit.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import {of, Subject} from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Publication, PublicationMetadata } from '../../models/publication.model';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -45,6 +45,7 @@ export class PublicationEditComponent implements OnInit, OnDestroy {
           if (params?.id) {
             return this.publicationEditService.getPublicationEditInfo(params.id);
           }
+          return of(null);
         }),
         takeUntil(this.unsubscribe$)
       )
@@ -86,7 +87,7 @@ export class PublicationEditComponent implements OnInit, OnDestroy {
   }
 
   saveResult(): void {
-    Object.keys(this.publicationEditForm.value).map(fieldName => {
+    Object.keys(this.publicationEditForm.value).forEach(fieldName => {
       const fieldId = this.publicationMetadata.find(pm => pm.fieldCode === fieldName).fieldId;
       this.publicationInfo.data.find(pi => pi.fieldId === fieldId).value = this.publicationEditForm.get(fieldName).value;
     });
